@@ -1,0 +1,9 @@
+{
+    "database-connexion":
+    {
+        "login":"xxxxxxx",
+        "password":"xxxxxxxx",
+        "database":"stady",
+        "server":"localhost"
+    }
+}

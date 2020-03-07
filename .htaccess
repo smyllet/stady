@@ -1,0 +1,8 @@
+Options All -Indexes
+DirectoryIndex index.php
+php_flag display_errors on
+
+
+<Files config.json>
+    Deny from all
+</Files>
