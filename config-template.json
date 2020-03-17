@@ -5,5 +5,10 @@
         "password":"xxxxxxxx",
         "database":"stady",
         "server":"localhost"
+    },
+    "info-ecole":
+    {
+        "name":"Nom de l'école",
+        "desc-ac":"Desciption de page d'accueil de l'école"
     }
 }

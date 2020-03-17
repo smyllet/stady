@@ -5,6 +5,10 @@
     }
     include_once "$racine/model/authentification.php";
 
+    include "$racine/getConfig.php";
+    $ecoleName = $config->{'info-ecole'}->{'name'};
+    $ecoleDesc = $config->{'info-ecole'}->{'desc-ac'};
+    $erreurMessage = "";
 
     // recuperation des donnees GET, POST, et SESSION
     if (!isset($_POST["login_identifiant"]) || !isset($_POST["login_password"]))
@@ -19,12 +23,12 @@
 
         if(!$identifiant) 
         {
-            echo "vous devez saisir votre identifiant";
+            $erreurMessage = '<p style="color: #FF0000; font-size: 70%;">Vous devez saisir votre identifiant</p>';
             include "$racine/vue/loginPage.php";
         }
         else if(!$password)
         {
-            echo "vous devez saisir votre mot de passe";
+            $erreurMessage = '<p style="color: #FF0000; font-size: 70%;">Vous devez saisir votre mot de passe</p>';
             include "$racine/vue/loginPage.php";
         }
         else
@@ -32,12 +36,12 @@
             $res = login($identifiant,$password);
             if($res == "bad_user") 
             {
-                echo "Identifiant invalide";
+                $erreurMessage = '<p style="color: #FF0000; font-size: 70%;">Identifiant invalide</p>';
                 include "$racine/vue/loginPage.php";
             }
             else if($res == "bad_password")
             {
-                echo "Mot de passe invalide";
+                $erreurMessage = '<p style="color: #FF0000; font-size: 70%;">Mot de passe invalide</p>';
                 include "$racine/vue/loginPage.php";
             }
             else
