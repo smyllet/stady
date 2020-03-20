@@ -46,7 +46,7 @@
             }
             else
             {
-                //Action à faire suite à la connexion
+                include "$racine/controllers/dashboard.php";
             }
         }
     }

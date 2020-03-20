@@ -28,7 +28,8 @@
         unset($_SESSION["password"]);
     }
 
-    function getIdentifiantLoggedOn(){
+    function getIdentifiantLoggedOn()
+    {
         if (isLoggedOn()){
             $ret = $_SESSION["identifiant"];
         }
@@ -39,7 +40,8 @@
             
     }
 
-    function isLoggedOn() {
+    function isLoggedOn()
+    {
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -53,5 +55,18 @@
             }
         }
         return $ret;
+    }
+
+    function isAdmin()
+    {
+        $ret = false;
+        if (isLoggedOn())
+        {
+            $util = getUserByIdentifiant($_SESSION["identifiant"]);
+            if ($util["user_admin"] == 1)
+            {
+                $ret = true;
+            }
+        }
     }
 ?>
