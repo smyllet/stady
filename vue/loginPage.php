@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Stady - Connexion</title>
-
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/loginPage.css" />
 </head>
 <body>
     <div id="gauche">
         <div class="center">
-            <img src="image/logo.png">
             <div id="etablissement-info">
                 <h3><?php echo $ecoleName?></h3>
                 <p><?php echo $ecoleDesc?></p>

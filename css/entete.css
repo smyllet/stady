@@ -4,6 +4,7 @@
 	text-decoration: none;
 	list-style: none;
 	box-sizing: border-box;
+	font-family: 'Rubik', sans-serif;
 }
 
 body{
@@ -11,12 +12,12 @@ body{
 }
 
 nav{
-	background: #47AADC;
+	background: #4e9cc5;
 	height: 80px;
 	width: 100%;
 }
 
-label.logo{
+label#logo{
 	color: white;
 	font-size: 35px;
 	line-height: 80px;
@@ -27,11 +28,31 @@ label.logo{
 nav ul{
 	float: right;
 	margin: right;
-	margin-right: 20%;
+	margin-right: 10%;
 }
 
 nav ul li{
 	display: inline-block;
 	line-height: 80px;
 	margin: 0 30px;
+
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: white;
+	font-size: 19px;
+}
+
+nav ul img#user{
+	position: absolute;
+	top: 2.5%;
+	left: 95%;
+	height:35px;
+	width:35px;
+}
+
+label img {
+    width: 85px;
+    align-items: baseline;
 }
