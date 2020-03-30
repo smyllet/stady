@@ -1,3 +1,4 @@
+use stady;
 DROP TABLE IF EXISTS TypeAccount;
 
 CREATE TABLE TypeAccount
@@ -9,4 +10,4 @@ CREATE TABLE TypeAccount
 INSERT INTO TypeAccount
 (type_name)
 VALUES
-('Proviseur'),('Professeur');
+('Proviseur'),('CPE'),('Professeur'),('Eleve'),('Tuteur');

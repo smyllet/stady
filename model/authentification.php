@@ -7,7 +7,7 @@
         $user = getUserByIdentifiant($identifiant); //Optenir les information lié à l'identifiant
         if (!$user) return "bad_user"; //Si il n'y a pas d'utilisateur alors retourner que le nom d'utilisateur est mauvais
 
-        $passwordDB = $user["user_password"]; //Récupération du mot de l'utilisateur
+        $passwordDB = $user["account_password"]; //Récupération du mot de l'utilisateur
 
         if (password_verify($password,$passwordDB)) //si les deux mot de passe sont les même alors . . .
         {
@@ -49,7 +49,7 @@
 
         if (isset($_SESSION["identifiant"])) {
             $util = getUserByIdentifiant($_SESSION["identifiant"]);
-            if ($util["user_identifiant"] == $_SESSION["identifiant"] && password_verify($_SESSION["password"],$util["user_password"]))
+            if ($util["account_identifiant"] == $_SESSION["identifiant"] && password_verify($_SESSION["password"],$util["account_password"]))
             {
                 $ret = true;
             }
@@ -63,10 +63,12 @@
         if (isLoggedOn())
         {
             $util = getUserByIdentifiant($_SESSION["identifiant"]);
-            if ($util["user_admin"] == 1)
+            if ($util["account_admin"] == 1)
             {
                 $ret = true;
             }
         }
+
+        return $ret;
     }
 ?>

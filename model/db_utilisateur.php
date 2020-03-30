@@ -34,7 +34,7 @@
         try
         {
             $cnx = connexionPDO();
-            $req = $cnx->prepare("select * from Users");
+            $req = $cnx->prepare("select * from Profil");
             $req->execute();
 
             $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@
 
         try {
             $cnx = connexionPDO();
-            $req = $cnx->prepare("select * from Users where user_identifiant=:identifiant");
+            $req = $cnx->prepare("select * from Profil where account_identifiant=:identifiant");
             $req->bindValue(':identifiant', $identifiant, PDO::PARAM_STR);
             $req->execute();
 
