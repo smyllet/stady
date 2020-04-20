@@ -1,0 +1,104 @@
+.bloc1{
+	width: 90%;
+	overflow: hidden;
+	background: none;
+	margin-top: 20px auto;
+	padding: 20px;
+	color: white;
+	margin-left: 415px;
+}
+.bloc1 a{
+	color: white;
+}
+
+.bloc1 ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+.bloc1 ul li{
+	list-style: none;
+	float: left;
+	width: 20%;
+	height: 300px;
+	margin: 40px 20px 0px 40px;
+	border-radius: 20px;
+}
+
+.bloc1 ul li img{
+	height: 259px;
+	width: 280px;
+	border-radius: 5px;
+}
+
+.bloc1 ul li:hover{
+	opacity: 0.9;
+}
+
+.bloc1 ul li .titre{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background: #4E9CC5;
+	text-align: center;
+	border-radius: 5px;
+}
+
+h1{
+	margin-bottom: 10px; 
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+label{
+	width: 166px;
+	display: inline-block;
+}
+
+.blocclasse{
+	width: 90%;
+	overflow: hidden;
+	background: none;
+	margin-top: 20px auto;
+	padding: 20px;
+	color: white;
+	margin-left: 415px;
+}
+.blocclasse a{
+	color: white;
+}
+
+.blocclasse ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+.blocclasse ul li{
+	list-style: none;
+	float: left;
+	width: 20%;
+	height: 300px;
+	margin: 40px 20px 0px 40px;
+	border-radius: 20px;
+}
+
+.blocclasse ul li img{
+	height: 259px;
+	width: 280px;
+	border-radius: 5px;
+}
+
+.blocclasse ul li:hover{
+	opacity: 0.9;
+}
+
+.blocclasse ul li .titre{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background: #4E9CC5;
+	text-align: center;
+	border-radius: 5px;
+}

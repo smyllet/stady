@@ -1,14 +1,16 @@
 <h1>Design Temporaire - Ajouter un profil</h1>
 <?php echo $erreurMessage?>
 <form action="./?action=admin_createProfil" method="post" id="createProfil_form">
-    <fieldset>
-        <legend>Profil</legend>
+
+        <h1>Profil</h1>
         <div>
             <input type="text" id="create_profil_name" name="create_profil_name" placeholder="Nom" required>
             <input type="text" id="create_profil_firstName" name="create_profil_firstName" placeholder="Prénom" required>
         </div>
         <div>
+            
             <input type="email" id="create_profil_email" name="create_profil_email" placeholder="Email">
+
             <input type="tel" id="create_profil_tel" name="create_profil_tel" placeholder="Téléphone">
         </div>
         <div>
@@ -23,12 +25,12 @@
                 <?php endforeach?>
             </select>
         </div>
-    </fieldset>
+
 
     <br>
 
-    <fieldset>
-        <legend>Compte</legend>
+
+        <h1>Compte</h1>
         <div>
             <label>Créer un compte utilisateur</label>
             <input type="checkbox" id="create_profil_creation" name="create_profil_creation">
@@ -51,7 +53,7 @@
             <label>Activer</label>
             <input type="checkbox" id="create_profil_active" name="create_profil_active">
         </div>
-    </fieldset>
+
 
     <div class="button">
         <button type="submit" id="create_profil">Ajouter</button>

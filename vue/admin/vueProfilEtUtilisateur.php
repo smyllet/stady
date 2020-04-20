@@ -1,3 +1,9 @@
-<h1>Design Temporaire - Profil et Utilisateur</h1>
-<a href="?action=admin_createProfil">Ajouter un profil</a><br>
-<a href="?action=admin_listProfil">Voir la liste des Profil</a>
+<div class="bloc1">
+<ul>
+
+<a href="?action=admin_createProfil"><li><div class="titre">Ajouter un profil</div><img src="image/ajoutprofil.png"></li></a>
+
+<a href="?action=admin_listProfil"><li><div class="titre">Voir la liste des profils</div><img src="image/listprofil.png"></li></a>
+
+</ul>
+</div>

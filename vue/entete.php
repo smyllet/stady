@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/entete.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
 	<title><?php echo $title?></title>
 <body>
     <nav id="mainnav"> 
