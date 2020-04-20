@@ -1,22 +1,24 @@
 <?php
     include_once "db.php";
 
-    function createAccount($identifiant, $name, $firstName, $email, $dateOfBirth, $type, $active, $password, $need_new_password)
+    function createProfil($name, $firstName, $email, $tel, $dateOfBirth, $type, $identifiant, $admin, $password, $active, $need_new_password)
     {
-        $crypt_password = password_hash($password,PASSWORD_DEFAULT);
+        $crypt_password = ($password == null) ? null : password_hash($password,PASSWORD_DEFAULT);
 
         try
         {
             $cnx = connexionPDO();
-            $req = $cnx->prepare("insert into Users (user_identifiant, user_name, user_firstName, user_email, user_dateOfBirth, user_type, user_active, user_password, need_new_password) values (:identifiant,:name,:firstName,:email,:dateOfBirth,:type,:active,:crypt_password,:need_new_password)");
-            $req->bindValue(':identifiant', $identifiant);
+            $req = $cnx->prepare("insert into Profil (profil_name, profil_firstName, profil_email, profil_tel, profil_dateOfBirth, profil_type, account_identifiant, account_admin, account_password, account_active, account_need_new_password) values (:name, :firstName, :email, :tel, :dateOfBirth, :type, :identifiant, :admin, :crypt_password, :active, :need_new_password)");
             $req->bindValue(':name', $name);
             $req->bindValue(':firstName',$firstName);
             $req->bindValue(':email',$email);
+            $req->bindValue(':tel',$tel);
             $req->bindValue(':dateOfBirth',$dateOfBirth);
             $req->bindValue(':type',$type);
-            $req->bindValue(':active',$active);
+            $req->bindValue(':identifiant', $identifiant);
+            $req->bindValue(':admin', $admin);
             $req->bindValue(':crypt_password',$crypt_password);
+            $req->bindValue(':active',$active);
             $req->bindValue(':need_new_password',$need_new_password);
             $req->execute();
             return 'created';
@@ -63,6 +65,31 @@
 
             $resultat = $req->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function getFiltreProfil()
+    {
+        $result = array();
+
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("select id, profil_name, profil_firstName, profil_email, profil_tel, profil_dateOfBirth, type_name, account_identifiant, account_admin, account_active from Profil inner join TypeAccount on profil_type = type_id");
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne)
+            {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+        catch (PDOException $e)
+        {
             print "Erreur !: " . $e->getMessage();
             die();
         }

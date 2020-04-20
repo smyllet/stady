@@ -16,7 +16,7 @@ CREATE TABLE Profil
 	profil_name VARCHAR(100) NOT NULL,
    profil_firstName VARCHAR(100) NOT NULL,
    profil_email VARCHAR(255),
-   entreprise_tel char(12),
+   profil_tel char(12),
    profil_dateOfBirth DATE,
    profil_type INT NOT NULL,
    
@@ -65,9 +65,9 @@ where profil_type = 5;
 /* Création de profil de test */
 
 INSERT INTO Profil
-(account_identifiant,profil_name,profil_firstName,profil_type,account_password,account_admin)
+(account_identifiant,profil_name,profil_firstName,profil_type,account_password,account_admin, account_active)
 VALUES
-('admin','none','administrateur',1,'$2y$10$v326v8hF9AwJDzKKS.ftMeuYHx0PxANCf3ikKbnFUSElR3OAyIk3q',true); /*Création du compte par defaut (identifiant:admin, mot de passe : password_admin)*/
+('admin','none','administrateur',1,'$2y$10$v326v8hF9AwJDzKKS.ftMeuYHx0PxANCf3ikKbnFUSElR3OAyIk3q',true, true); /*Création du compte par defaut (identifiant:admin, mot de passe : password_admin)*/
 
 INSERT INTO Profil
 (profil_name,profil_firstName,profil_type,tuteur_id_entreprise)

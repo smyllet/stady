@@ -12,7 +12,7 @@
     }
     else
     {
-        $title = "dashboard";
+        $title = "Dashboard";
         include "$racine/vue/entete.php";
         include "$racine/vue/pied.php";
     }

@@ -10,7 +10,7 @@
         	<li><a href="?action=dashboard">Accueil</a></li>
         	<li><a href="#">Carnet d'élève</a></li>
         	<li><a href="#">Agenda</a></li>
-            <li><a href="?action=pannelAdmin">Pannel Admin</a></li>
+            <li><a href="?action=admin_pannel">Pannel Admin</a></li>
 			<a href="#"><img src="image/iconuser.svg" id="user"></a>        
         </ul>
 
