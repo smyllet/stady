@@ -9,7 +9,7 @@
         <label id="logo"><img src="image/logo1.png"></label>
         <ul>
         	<li><a href="?action=dashboard">Accueil</a></li>
-        	<li><a href="#">Carnet d'élève</a></li>
+        	<li><a href="?action=carnetEleve">Carnet d'élève</a></li>
         	<li><a href="#">Agenda</a></li>
             <li><a href="?action=admin_pannel">Pannel Admin</a></li>
 			<a href="#"><img src="image/iconuser.svg" id="user"></a>        

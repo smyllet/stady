@@ -51,8 +51,8 @@ AS SELECT id, profil_name, profil_firstName, profil_email, profil_dateOfBirth, a
 from Profil
 where profil_type = 3;
 
-CREATE VIEW Profil_eleve(id, nom, prenom, email, dateNaissance, ac_identifiant, ac_admin, ac_password, ac_active, ac_need_new_password, e_id_classe)
-AS SELECT id, profil_name, profil_firstName, profil_email, profil_dateOfBirth, account_identifiant, account_admin, account_password, account_active, account_need_new_password, eleve_id_classe
+CREATE VIEW Profil_eleve(id, nom, prenom, email, tel, dateNaissance, ac_identifiant, ac_admin, ac_password, ac_active, ac_need_new_password, e_id_classe)
+AS SELECT id, profil_name, profil_firstName, profil_email, profil_tel, profil_dateOfBirth, account_identifiant, account_admin, account_password, account_active, account_need_new_password, eleve_id_classe
 from Profil
 where profil_type = 4;
 

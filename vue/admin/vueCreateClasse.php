@@ -10,7 +10,9 @@
             <?php foreach($sections as $section): ?>
                 <option value="<?php echo $section["section_id"]?>"><?php echo $section["section_name"]?></option>
             <?php endforeach?>
+            <option value="0">Nouvelle section</option>
         </select>
+        <input type="text" id="create_classe_newsection" name="create_classe_newsection" placeholder="Nom de la section">
     </div>
 
     <div class="button">

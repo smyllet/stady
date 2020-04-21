@@ -7,7 +7,7 @@
         $actionsListe["connexion"] = "connexion.php";
         $actionsListe["deconnexion"] = "deconnexion.php";
         $actionsListe["dashboard"] = "dashboard.php";
-        $actionsListe["pannelAdmin"] = "pannelAdmin.php";
+        $actionsListe["carnetEleve"] = "carnetEleve.php";
         $actionsListe["debug"] = "debug.php";
 
         $actionsAdmin= array();

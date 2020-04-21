@@ -95,4 +95,80 @@
         }
         return $resultat;
     }
+
+    function getEleves() {
+        $result = array();
+
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT e.id, e.nom, e.prenom, e.email, e.tel, e.dateNaissance, c.classe_name AS 'classe', s.section_name AS 'section' from profil_eleve e LEFT JOIN Classe c ON e.e_id_classe = c.classe_id LEFT JOIN Section s ON c.classe_section_id = s.section_id");
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne)
+            {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+        catch (PDOException $e)
+        {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function getFiltreEleves($name,$firstName,$email,$tel,$classe,$section)
+    {
+        $resultat = array();
+
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT e.id, e.nom, e.prenom, e.email, e.tel, e.dateNaissance, c.classe_name AS 'classe', s.section_name AS 'section' from profil_eleve e LEFT JOIN Classe c ON e.e_id_classe = c.classe_id LEFT JOIN Section s ON c.classe_section_id = s.section_id WHERE (e.nom LIKE :name) && (e.prenom LIKE :firstName) && (e.email LIKE :email) && (e.tel LIKE :tel)");
+            $req->bindValue(':name', $name."%");
+            $req->bindValue(':firstName',$firstName."%");
+            $req->bindValue(':email',$email."%");
+            $req->bindValue(':tel',$tel."%");
+            //$req->bindValue(':section',(($section == null) || ($section == 0)) ? "" : "&& (s.section_id = \"$section\")");
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne)
+            {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+        catch (PDOException $e)
+        {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function createEleve($name, $firstName, $email, $tel, $dateNaissance, $classe)
+    {
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("INSERT INTO profil (profil_name, profil_firstName, profil_email, profil_tel, profil_dateOfBirth, profil_type, eleve_id_classe) VALUES (:name, :firstName, :email, :tel, :dateNaissance, 4, :classe)");
+            $req->bindValue(':name', $name);
+            $req->bindValue(':firstName',$firstName);
+            $req->bindValue(':email',$email);
+            $req->bindValue(':tel',$tel);
+            $req->bindValue(':dateNaissance',$dateNaissance);
+            $req->bindValue(':classe',$classe);
+            $req->execute();
+            return 'created';
+        }
+        catch (PDOException $e)
+        {
+            print "Erreur !: " . $e->getMessage();
+            return 'error';
+        }
+    }
 ?>
