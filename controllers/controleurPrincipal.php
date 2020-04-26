@@ -8,6 +8,7 @@
         $actionsListe["deconnexion"] = "deconnexion.php";
         $actionsListe["dashboard"] = "dashboard.php";
         $actionsListe["carnetEleve"] = "carnetEleve.php";
+        $actionsListe["stages"] = "stages.php";
         $actionsListe["debug"] = "debug.php";
 
         $actionsAdmin= array();
@@ -22,17 +23,17 @@
         $actionsAdmin["admin_listProfil"] = "admin/listProfil.php";
         $actionsAdmin["admin_createProfil"] = "admin/createProfil.php";
     
-        if (array_key_exists($action, $actionsListe))
+        if (array_key_exists($action, $actionsListe) && isLoggedOn())
         {
             return $actionsListe[$action];
         }
         else if(substr($action, 0, 6) == "admin_")
         {
-            if(isLoggedOn() == false)
+            if(!isLoggedOn())
             {
                 include "controllers/connexion.php";
             }
-            else if(isAdmin() == true)
+            else if(isAdmin())
             {
                 if (array_key_exists($action, $actionsAdmin))
                 {

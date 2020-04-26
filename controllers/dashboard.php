@@ -6,14 +6,9 @@
 
     include_once "$racine/model/authentification.php";
 
-    if(isLoggedOn() == false)
-    {
-        include "$racine/controllers/connexion.php";
-    }
-    else
-    {
-        $title = "Dashboard";
-        include "$racine/vue/entete.php";
-        include "$racine/vue/pied.php";
-    }
+    $title = "Dashboard";
+    $firstName = getUserByIdentifiant($_SESSION["identifiant"])["profil_firstName"];
+    include "$racine/vue/entete.php";
+    include "$racine/vue/vueAccueil.php";
+    include "$racine/vue/pied.php";
 ?>

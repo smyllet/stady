@@ -82,7 +82,7 @@
 
     function getFiltreClassesList()
     {
-        $result = array();
+        $resultat = array();
 
         try
         {

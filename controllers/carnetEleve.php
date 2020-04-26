@@ -47,6 +47,7 @@
             $rFirstName = $_POST["recherche_eleve_firstName"];
             $rEmail = ($_POST["recherche_eleve_email"] == null) ? null : trim ($_POST["recherche_eleve_email"]);
             $rTel = ($_POST["recherche_eleve_tel"] == "") ? null : trim ($_POST["recherche_eleve_tel"]);
+            var_dump($_POST["recherche_eleve_tel"]);
             if(strlen($rTel) > 12) $rTel = null;
         }
     }

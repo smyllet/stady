@@ -127,12 +127,11 @@
         try
         {
             $cnx = connexionPDO();
-            $req = $cnx->prepare("SELECT e.id, e.nom, e.prenom, e.email, e.tel, e.dateNaissance, c.classe_name AS 'classe', s.section_name AS 'section' from profil_eleve e LEFT JOIN Classe c ON e.e_id_classe = c.classe_id LEFT JOIN Section s ON c.classe_section_id = s.section_id WHERE (e.nom LIKE :name) && (e.prenom LIKE :firstName) && (e.email LIKE :email) && (e.tel LIKE :tel)");
+            $req = $cnx->prepare("SELECT e.id, e.nom, e.prenom, e.email, e.tel, e.dateNaissance, c.classe_name AS 'classe', s.section_name AS 'section' from profil_eleve e LEFT JOIN Classe c ON e.e_id_classe = c.classe_id LEFT JOIN Section s ON c.classe_section_id = s.section_id WHERE (e.nom LIKE :name) && (e.prenom LIKE :firstName) && (IFNULL(e.email,'') LIKE :email) && (IFNULL(e.tel,'') LIKE :tel)");
             $req->bindValue(':name', $name."%");
             $req->bindValue(':firstName',$firstName."%");
             $req->bindValue(':email',$email."%");
             $req->bindValue(':tel',$tel."%");
-            //$req->bindValue(':section',(($section == null) || ($section == 0)) ? "" : "&& (s.section_id = \"$section\")");
             $req->execute();
 
             $ligne = $req->fetch(PDO::FETCH_ASSOC);
