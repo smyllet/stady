@@ -8,5 +8,6 @@ CREATE TABLE StageEleve
    stageEleve_stage_id INT NOT NULL,
    stageEleve_entreprise_id INT NOT NULL,
    stageEleve_tuteur_id INT,
-   stageEleve_referent_id INT
+   stageEleve_referent_id INT,
+   stageEleve_statut_id INT
 );

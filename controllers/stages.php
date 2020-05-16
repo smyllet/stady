@@ -55,7 +55,7 @@
     $classes = getClasses();
     //$sections = getSections();
 
-    $title = "Carnet d'éleve";
+    $title = "Stages";
     include "$racine/vue/entete.php";
     include "$racine/vue/vueStages.php";
     include "$racine/vue/pied.php";

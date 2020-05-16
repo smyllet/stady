@@ -118,4 +118,54 @@
         }
         return $resultat;
     }
+
+    function getAllStagesOfEleveById($id) {
+        $resultat = array();
+
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT st.stage_id, st.stage_name, st.stage_date_start, st.stage_date_end, se.stageEleve_entreprise_id AS 'entreprise_id', se.stageEleve_tuteur_id AS 'tuteur_id', se.stageEleve_referent_id AS 'referent_id', stu.statut_name AS 'statut', ROUND(DATEDIFF(st.stage_date_end,st.stage_date_start)/7,0) AS 'week_duree' FROM profil_eleve e INNER JOIN stageclasse sc ON e.e_id_classe = sc.stageClasse_classe_id INNER JOIN stage st ON st.stage_id = sc.stageClasse_stage_id LEFT JOIN stageeleve se ON (e.id = se.stageEleve_eleve_id) AND (st.stage_id = se.stageEleve_stage_id) LEFT JOIN statut stu ON IFNULL(se.stageEleve_statut_id,1) = stu.statut_id WHERE e.id = :id");
+            $req->bindValue(':id', $id, PDO::PARAM_STR);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne)
+            {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+        catch (PDOException $e)
+        {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function getStatuts()
+    {
+        $result = array();
+
+        try
+        {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("select * from statut");
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne)
+            {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+        }
+        catch (PDOException $e)
+        {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
 ?>

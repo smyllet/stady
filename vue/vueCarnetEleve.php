@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         <?php foreach ($eleves as $eleve): ?>
-            <tr>
+            <tr onclick="location.href='./?action=ficheEleve&idEleve=<?php echo $eleve["id"]?>'">
                 <td><?php echo $eleve["nom"]?></td>
                 <td><?php echo $eleve["prenom"]?></td>
                 <td><?php echo $eleve["email"]?></td>

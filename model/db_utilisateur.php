@@ -170,4 +170,21 @@
             return 'error';
         }
     }
+
+    function getEleveById($id) {
+        $resultat = array();
+
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT e.id, e.nom, e.prenom, e.email, e.tel, e.dateNaissance, e.e_id_classe, c.classe_name, s.section_name FROM Profil_eleve e LEFT JOIN classe c ON e.e_id_classe = c.classe_id  LEFT JOIN section s ON c.classe_section_id = s.section_id WHERE e.id=:id");
+            $req->bindValue(':id', $id, PDO::PARAM_STR);
+            $req->execute();
+
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
 ?>

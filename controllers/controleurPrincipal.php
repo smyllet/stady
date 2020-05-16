@@ -8,6 +8,7 @@
         $actionsListe["deconnexion"] = "deconnexion.php";
         $actionsListe["dashboard"] = "dashboard.php";
         $actionsListe["carnetEleve"] = "carnetEleve.php";
+        $actionsListe["ficheEleve"] = "ficheEleve.php";
         $actionsListe["stages"] = "stages.php";
         $actionsListe["debug"] = "debug.php";
 
