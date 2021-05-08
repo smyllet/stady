@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0.23
+    ports:
+      - "3306:3306"
+    restart: always
+    networks:
+      - stady-network
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: stady
+      MYSQL_USER: stady
+      MYSQL_PASSWORD: password
+      LANG : C.UTF-8
+    volumes:
+      - ./scriptSQL/tableAccount.sql:/docker-entrypoint-initdb.d/1tableAccount.sql
+      - ./scriptSQL/tableClasse.sql:/docker-entrypoint-initdb.d/2tableClasse.sql
+      - ./scriptSQL/tableEntreprise.sql:/docker-entrypoint-initdb.d/3tableEntreprise.sql
+      - ./scriptSQL/tableProfil.sql:/docker-entrypoint-initdb.d/4tableProfil.sql
+      - ./scriptSQL/tableSection.sql:/docker-entrypoint-initdb.d/5tableSection.sql
+      - ./scriptSQL/tableStage.sql:/docker-entrypoint-initdb.d/6tableStage.sql
+      - ./scriptSQL/tableStageClasse.sql:/docker-entrypoint-initdb.d/7tableStageClasse.sql
+      - ./scriptSQL/tableStageEleve.sql:/docker-entrypoint-initdb.d/8tableStageEleve.sql
+      - ./scriptSQL/tableStatut.sql:/docker-entrypoint-initdb.d/9tableStatut.sql
+    command: --lower_case_table_names=1 --log_bin_trust_function_creators=1
+  web:
+    image: lavoweb/php-7.4
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - stady-network
+networks:
+  stady-network:
+    name: stady-network
